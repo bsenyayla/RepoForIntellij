@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/master-layout}">
+<head th:replace="public/fragments/head-elements :: headElements"></head>
+<title>ERegistrar System - Home</title>
+</head>
+
+<body>
+<div th:replace="public/fragments/header :: header"></div>
+
+
+<section class="vh-100" style="background-color: #d7deef;">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                    <div class="card-body p-5">
+                        <div class="text-center">
+                            <h4 class="card-title">Sign In with your eRegistrar Account</h4>
+                            <p class="card-text">
+                                Enter your eRegistrar Username and Password below, to sign in.
+                            </p>
+                        </div>
+                        <br>
+
+                        <form name="formLogin" th:action="@{/eregistrar/public/login}" method="post">
+                            <div th:if="${param.error}" class="alert alert-dismissible alert-danger">
+                                <button type="button" class="close btn" data-dismiss="alert">&times;</button>
+                                Invalid username and/or password.
+                            </div>
+                            <div th:if="${param.logout}" class="alert alert-dismissible alert-primary">
+                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                You have been signed out.
+                            </div>
+
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="username" style="text-align: left">Username</label>
+                                <input id="username" name="username" type="text" class="form-control" autofocus="autofocus"/>
+                            </div>
+
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="password">Password</label>
+                                <input id="password" name="password" type="password" class="form-control"/>
+                            </div>
+                            <br>
+
+                            <div class="text-center">
+                                <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
+                            </div>
+                        </form>
+
+<!--                        <hr class="my-4">-->
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<th:block layout:fragment="footer"></th:block>
+
+</body>
+</html>
