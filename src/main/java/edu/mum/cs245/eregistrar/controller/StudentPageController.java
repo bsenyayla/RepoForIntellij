@@ -70,6 +70,7 @@ public class StudentPageController {
             model.addAttribute("student", student);
             return "secure/student/edit";
         }
+        //test
         return "redirect:/";
     }
 
